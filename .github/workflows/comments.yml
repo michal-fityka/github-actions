@@ -17,6 +17,11 @@ jobs:
       - name: Create file
         run: |
             python3 michal-fityka/github-actions/file.py
+      - name: Read file
+        id: fileid
+        run: >-
+            echo "::set-output name=FILE_CONTENT::$(
+            cat file.md)"
       - name: Add comment
         run: gh issue comment "$NUMBER" --body "$BODY"
         env:
