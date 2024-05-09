@@ -32,16 +32,16 @@ jobs:
         run: |
             python3 file.py
             whereis gh
-      - name: Read file
-        id: fileid
-        run: |
-            echo "content=`cat file.md`" >> $GITHUB_OUTPUT
+      #- name: Read file
+      #  id: fileid
+      #  run: |
+      #      echo "content=`cat file.md`" >> $GITHUB_OUTPUT
       - name: Add comment
-        run: gh issue comment "$NUMBER" --body "$BODY"
+        run: cat file.md | gh issue comment "$NUMBER" --body "$BODY" -
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           #GH_REPO: "github.kyndryl.net/michal-fityka/terraform-automation"
           NUMBER: ${{ github.event.issue.number }}
-          BODY: >
-              ${{ steps.fileid.outputs.content }}
+          #BODY: >
+          #    ${{ steps.fileid.outputs.content }}
