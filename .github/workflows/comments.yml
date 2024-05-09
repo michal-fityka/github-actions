@@ -16,7 +16,7 @@ jobs:
           python-version: '3.11'
       - name: Create file
         run: |
-            python3 michal-fityka/github-actions/file.py
+            python3 file.py
       - name: Read file
         id: fileid
         run: >-
