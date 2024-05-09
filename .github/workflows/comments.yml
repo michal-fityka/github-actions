@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create file
         run: |
-            python3 github-actions/file.py
+            python3 file.py
       - name: Read file
         id: fileid
         run: >-
