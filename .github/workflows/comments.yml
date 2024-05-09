@@ -19,6 +19,7 @@ jobs:
       - name: Create file
         run: |
             python3 file.py
+            whereis gh
       - name: Read file
         id: fileid
         run: >-
