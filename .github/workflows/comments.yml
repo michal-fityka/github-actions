@@ -32,6 +32,7 @@ jobs:
         run: |
             python3 file.py
             whereis gh
+            cat file.md
       #- name: Read file
       #  id: fileid
       #  run: |
