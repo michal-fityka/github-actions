@@ -38,7 +38,7 @@ jobs:
       #  run: |
       #      echo "content=`cat file.md`" >> $GITHUB_OUTPUT
       - name: Add comment
-        run: cat file.md | gh issue comment "$NUMBER" --body "$BODY" -
+        run: cat file.md | gh issue comment "$NUMBER" --body -
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
