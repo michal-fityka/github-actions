@@ -16,7 +16,7 @@ jobs:
           python-version: '3.11'
       - name: Create file
         run: |
-            python3 file.py
+            python3 github-actions/file.py
       - name: Read file
         id: fileid
         run: >-
