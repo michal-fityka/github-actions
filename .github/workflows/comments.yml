@@ -33,16 +33,20 @@ jobs:
             python3 file.py
             whereis gh
             cat file.md
-      #- name: Read file
-      #  id: fileid
-      #  run: |
-      #      echo "content=`cat file.md`" >> $GITHUB_OUTPUT
+      - name: Read file
+        id: fileid
+        run: |
+            echo "content=`cat file.md`" >> $GITHUB_OUTPUT
       - name: Add comment
-        run: gh issue comment "$NUMBER" -F file.md
+        uses: actions/github-script@v6
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          #GH_REPO: "github.kyndryl.net/michal-fityka/terraform-automation"
-          NUMBER: ${{ github.event.issue.number }}
-          #BODY: >
-          #    ${{ steps.fileid.outputs.content }}
+          KEPLOY_REPORT: ${{ steps.fileid.outputs.content }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: process.env.KEPLOY_REPORT
+            })
