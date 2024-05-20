@@ -33,14 +33,14 @@ jobs:
             python3 file.py
             whereis gh
             cat file.md
-      - name: Read file
-        id: fileid
-        run: |
-            echo "content=`cat file.md`" >> $GITHUB_OUTPUT
+      #- name: Read file
+       # id: fileid
+       # run: |
+        #    echo "content=`cat file.md`" >> $GITHUB_OUTPUT
       - name: Add comment
         uses: actions/github-script@v6
-        env:
-          KEPLOY_REPORT: ${{ steps.fileid.outputs.content }}
+        #env:
+         # KEPLOY_REPORT: ${{ steps.fileid.outputs.content }}
         with:
           github-token: ${{ github.token }}
           script: |
